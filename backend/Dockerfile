@@ -17,8 +17,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
     httpx \
     python-multipart \
     email-validator
-
-COPY backend /app/backend
+    
+COPY . /app
 
 EXPOSE 8001
 
