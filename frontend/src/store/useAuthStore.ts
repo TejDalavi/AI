@@ -57,14 +57,14 @@ export const useAuthStore = create<AuthState>((set) => ({
       body.set('username', credentials.username);
       body.set('password', credentials.password);
 
-      const response = await api.post('/auth/login', body, {
+      const response = await api.post('/api/auth/login', body, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       });
 
       localStorage.setItem('token', response.data.access_token);
       localStorage.setItem('role', response.data.role);
 
-      const meResponse = await api.get('/auth/me', {
+      const meResponse = await api.get('/api/auth/me', {
         headers: { Authorization: `Bearer ${response.data.access_token}` },
       });
 
@@ -85,7 +85,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   register: async (data) => {
     set({ isLoading: true, error: null });
     try {
-      await api.post('/auth/register', data);
+      await api.post('/api/auth/register', data);
       set({ isLoading: false });
     } catch (err: any) {
       set({ error: err.response?.data?.detail || 'Registration failed', isLoading: false });
@@ -95,7 +95,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   fetchMe: async () => {
     try {
-      const response = await api.get('/auth/me');
+      const response = await api.get('/api/auth/me');
       persistUser(response.data);
       set({ user: response.data, role: response.data.role, error: null });
     } catch {
@@ -104,7 +104,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   updateProfile: async (data) => {
-    const response = await api.put('/auth/me/profile', data);
+    const response = await api.put('/api/auth/me/profile', data);
     persistUser(response.data);
     set({ user: response.data, role: response.data.role, error: null });
   },
