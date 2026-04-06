@@ -167,7 +167,7 @@ export default function Sidebar() {
         {/* ── Bottom: admin + profile + logout ── */}
         <div style={{ padding: collapsed ? '10px 8px' : '10px', borderTop: `1px solid ${borderC}`, display: 'flex', flexDirection: 'column', gap: 2 }}>
           {role === 'admin' && (
-            <a href="https://github.com/TejDalavi/AI/blob/main/frontend/src/pages/Admin.tsx" style={{ display: 'flex', alignItems: 'center', gap: 7, padding: collapsed ? '8px 6px' : '8px 10px', borderRadius: 8, textDecoration: 'none', color: mutedC, fontSize: 12, justifyContent: collapsed ? 'center' : 'flex-start', transition: 'all .12s' }}
+            <a href="/admin" style={{ display: 'flex', alignItems: 'center', gap: 7, padding: collapsed ? '8px 6px' : '8px 10px', borderRadius: 8, textDecoration: 'none', color: mutedC, fontSize: 12, justifyContent: collapsed ? 'center' : 'flex-start', transition: 'all .12s' }}
               onMouseEnter={e => { e.currentTarget.style.background = hoverBg; e.currentTarget.style.color = textC; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = mutedC; }}>
               <Settings size={14} style={{ flexShrink: 0 }} />
