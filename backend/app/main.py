@@ -5,7 +5,7 @@ from backend.app.infrastructure.database import init_db, engine
 from backend.app.api import auth, chats, admin
 from backend.app.core.config import settings
 from backend.app.domain.models import LLMConfig, LLMProvider, User, UserRole, UserStatus
-
+from app import something
 app = FastAPI(title=settings.PROJECT_NAME)
 
 # CORS configuration
