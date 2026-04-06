@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
-from backend.app.infrastructure.database import init_db, engine
+from app.infrastructure.database import init_db, engine
 from backend.app.api import auth, chats, admin
 from backend.app.core.config import settings
 from backend.app.domain.models import LLMConfig, LLMProvider, User, UserRole, UserStatus
