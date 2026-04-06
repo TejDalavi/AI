@@ -1,0 +1,15 @@
+fastapi[all]
+sqlmodel
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+openai
+anthropic
+google-generativeai
+python-dotenv
+pgvector
+alembic
+pydantic-settings
+uvicorn
+pytest
+httpx

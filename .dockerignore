@@ -1,0 +1,16 @@
+.git/
+.vscode/
+.tmp/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/**/*.pyo
+backend/**/*.pyd
+backend/**/*.log
+backend/tests/
+**/__pycache__/
+**/*.log
+README.md

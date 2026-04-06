@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Local data and logs
+mock_data.json
+*.log
+
+# Local env files
+.env
+.env.*
+!.env.example
