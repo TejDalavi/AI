@@ -1,18 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
-
-from app.infrastructure.database import init_db, engine
-from app.api import auth, chats, admin
-from app.core.config import settings
-from app.domain.models import LLMConfig, LLMProvider, User, UserRole, UserStatus
+from backend.app.infrastructure.database import init_db, engine
+from backend.app.api import auth, chats, admin
+from backend.app.core.config import settings
+from backend.app.domain.models import LLMConfig, LLMProvider, User, UserRole, UserStatus
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # change later
+    allow_origins=["*"],  # Adjust this for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -24,10 +23,8 @@ def on_startup():
     with Session(engine) as session:
         statement = select(User).where(User.username == settings.ADMIN_USERNAME)
         admin = session.exec(statement).first()
-
         if not admin:
-            from app.core.security import get_password_hash  # ✅ FIXED
-
+            from backend.app.core.security import get_password_hash
             new_admin = User(
                 username=settings.ADMIN_USERNAME,
                 email="admin@example.com",
@@ -41,7 +38,6 @@ def on_startup():
 
         llm_statement = select(LLMConfig).where(LLMConfig.is_active == True)
         active_config = session.exec(llm_statement).first()
-
         if not active_config:
             session.add(
                 LLMConfig(
@@ -56,7 +52,7 @@ def on_startup():
             session.commit()
             print("Default LLM configuration created.")
 
-# Routers
+# Include routers
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(chats.router, prefix="/api/chats", tags=["chats"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
@@ -64,3 +60,4 @@ app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
