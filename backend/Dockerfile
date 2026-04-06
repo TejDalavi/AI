@@ -18,8 +18,11 @@ RUN pip install --no-cache-dir --upgrade pip && \
     python-multipart \
     email-validator
 
-COPY . /app
+# 🔥 IMPORTANT CHANGE HERE
+COPY . /app/backend
+
+WORKDIR /app
 
 EXPOSE 10000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "10000"]
+CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "10000"]
