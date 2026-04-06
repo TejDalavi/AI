@@ -2,7 +2,7 @@ import axios from "axios";
 import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001/api',
+  baseURL: https://ai-2-wem5.onrender.com',
 });
 
 // Add Interceptor to attach JWT
