@@ -2,7 +2,7 @@ from sqlalchemy import inspect, text
 from sqlmodel import Session, SQLModel, create_engine
 
 # ✅ Your Render PostgreSQL URL
-DATABASE_URL = "postgresql://ai_gfq3_user:wR4PJ1EFBLiaqKw1gK5Ep0hZM7MLNNOr@dpg-d79nn7ruibrs73890lg0-a.ohio-postgres.render.com/ai_gfq3"
+DATABASE_URL = "postgresql://ai_9e4e_user:qhM6EH8bCvRb9cblrjcvGYE5K8A0eyYn@dpg-d79q7j2a214c73b0hd2g-a.ohio-postgres.render.com/ai_9e4e"
 
 # ✅ Create engine
 engine = create_engine(
